@@ -3,36 +3,14 @@ import { NavigationContainer } from '@react-navigation/native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { createStackNavigator } from '@react-navigation/stack';
 import { View, Text, StyleSheet } from 'react-native';
-import LinearGradient from 'react-native-linear-gradient';
 import { BlurView } from '@react-native-community/blur';
 
 import { PropertiesScreen } from '../screens/PropertiesScreen';
+import { EventsScreen } from '../screens/EventsScreen';
+import { OffersScreen } from '../screens/OffersScreen';
+import { BookingsScreen } from '../screens/BookingsScreen';
+import { ProfileScreen } from '../screens/ProfileScreen';
 import { colors, spacing, borderRadius } from '../theme';
-
-// Placeholder screens
-const EventsScreen = () => (
-  <View style={styles.placeholder}>
-    <Text style={styles.placeholderText}>Events Screen 🎉</Text>
-  </View>
-);
-
-const OffersScreen = () => (
-  <View style={styles.placeholder}>
-    <Text style={styles.placeholderText}>Offers Screen 🎁</Text>
-  </View>
-);
-
-const BookingsScreen = () => (
-  <View style={styles.placeholder}>
-    <Text style={styles.placeholderText}>Bookings Screen 📅</Text>
-  </View>
-);
-
-const ProfileScreen = () => (
-  <View style={styles.placeholder}>
-    <Text style={styles.placeholderText}>Profile Screen 👤</Text>
-  </View>
-);
 
 const Tab = createBottomTabNavigator();
 const Stack = createStackNavigator();
@@ -146,16 +124,5 @@ const styles = StyleSheet.create({
   },
   tabIcon: {
     fontSize: 24,
-  },
-  placeholder: {
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-    backgroundColor: colors.background,
-  },
-  placeholderText: {
-    fontSize: 24,
-    color: colors.textPrimary,
-    fontWeight: 'bold',
   },
 });

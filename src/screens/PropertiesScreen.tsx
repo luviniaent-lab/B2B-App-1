@@ -8,6 +8,7 @@ import {
   SafeAreaView,
   StatusBar,
 } from 'react-native';
+import { useAppSelector } from '../hooks/useAppSelector';
 import { AnimatedBackground } from '../components/ui/AnimatedBackground';
 import { GlassCard } from '../components/ui/GlassCard';
 import { NeonButton } from '../components/ui/NeonButton';
@@ -15,35 +16,10 @@ import { PropertyCard } from '../components/ui/PropertyCard';
 import { Property } from '../types';
 import { colors, spacing, textStyles, borderRadius } from '../theme';
 
-// Mock data
-const mockProperties: Property[] = [
-  {
-    id: 'p1',
-    name: 'Neon Night Club',
-    location: 'DLF CyberHub, Gurugram',
-    type: 'Club',
-    occupancy: 320,
-    verified: true,
-    totalBookings: 1284,
-    themes: ['DJ', 'Bollywood', 'Ladies Night'],
-    amenities: ['Parking', 'Valet', 'Dance Floor'],
-  },
-  {
-    id: 'p2',
-    name: 'Skybar Rooftop',
-    location: 'Connaught Place, Delhi',
-    type: 'Bar',
-    occupancy: 150,
-    verified: true,
-    totalBookings: 892,
-    themes: ['Jazz', 'Live Band', 'Rooftop'],
-    amenities: ['WiFi', 'AC', 'VIP Section'],
-  },
-];
 
 export const PropertiesScreen: React.FC = () => {
   const [searchQuery, setSearchQuery] = useState('');
-  const [properties] = useState<Property[]>(mockProperties);
+  const properties = useAppSelector(state => state.app.properties);
 
   const filteredProperties = properties.filter(property =>
     property.name.toLowerCase().includes(searchQuery.toLowerCase()) ||

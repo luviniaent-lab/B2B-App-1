@@ -8,6 +8,7 @@ import {
   Animated,
 } from 'react-native';
 import LinearGradient from 'react-native-linear-gradient';
+import { useHapticFeedback } from '../../hooks/useHapticFeedback';
 import { colors, spacing, borderRadius, textStyles, shadows } from '../../theme';
 
 interface NeonButtonProps {
@@ -31,9 +32,11 @@ export const NeonButton: React.FC<NeonButtonProps> = ({
   textStyle,
   icon,
 }) => {
+  const { impact } = useHapticFeedback();
   const scaleAnim = new Animated.Value(1);
 
   const handlePressIn = () => {
+    impact('light');
     Animated.spring(scaleAnim, {
       toValue: 0.95,
       useNativeDriver: true,
